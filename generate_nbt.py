@@ -1,5 +1,5 @@
 import time
-from nbt_structure_utils import NBTStructure, Vector, BlockData
+from nbt_structure_utils import NBTStructure, Vector, BlockData, Cuboid
 import json
 from PIL import Image
 import os
@@ -42,7 +42,8 @@ def main():
                 pixel_greyscale[x, y] = round(grey(r, g, b), 2)
 
         structure = NBTStructure()
-        structure.fill((canvas_origin, canvas_origin + Vector(new_width-1, 0, new_height-1)), BlockData("white_concrete"))
+        # noinspection PyTypeChecker
+        structure.fill(Cuboid(canvas_origin, canvas_origin + Vector(new_width-1, 0, new_height-1)), BlockData("white_concrete"))
         for x in range(new_width):
             for y in range(new_height):
                 scale = pixel_greyscale[x, y]
@@ -50,7 +51,6 @@ def main():
                 block_name = test_results[str(found)]
                 structure.set_block(cover_origin + Vector(x, 0, y), BlockData(block_name))
         structure.get_nbt().write_file(filename=os.path.join("nbts", image_name + ".nbt"))
-        # Buggy! Unable to load too large structures, floors not loaded
 
 
 if __name__ == "__main__":
