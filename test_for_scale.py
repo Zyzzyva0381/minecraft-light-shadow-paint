@@ -14,7 +14,7 @@ def main():
     print("Testing images...")
     grey_table = dict()
     for file_name in list(os.walk(test_folder))[0][2]:
-        image = Image.open(os.path.join(test_folder, file_name))
+        image = Image.open(os.path.join(test_folder, file_name)).convert("RGB")
         block_name = file_name.split(".")[0]
         pixels = image.load()
         width, height = image.size
@@ -22,10 +22,10 @@ def main():
         for x in range(width):
             for y in range(height):
                 # noinspection PyUnresolvedReferences
-                r, g, b, a = pixels[x, y]
+                r, g, b = pixels[x, y]
                 grey_list.append(grey(r, g, b))
-        mean_grey = mean(grey_list)
-        grey_table[block_name] = mean_grey
+        mean_grey = round(mean(grey_list), 2)
+        grey_table[mean_grey] = block_name
         print(file_name, "is tested")
     with open("test_results.json", "w") as f:
         json.dump(grey_table, f)
