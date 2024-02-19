@@ -15,14 +15,14 @@ After sufficient testing, place the source images in "source_folder", and run "g
 
 ## Running requirements
 Run the python source files with Python 3.11.5 installed with the following packages: 
-joblib              1.3.2
-NBT                 1.5.1
-nbt-structure-utils 0.3.0
-numpy               1.26.3
-pillow              10.2.0
-pip                 22.3.1
-scikit-learn        1.4.0
-scipy               1.12.0
-setuptools          65.5.1
-threadpoolctl       3.2.0
-wheel               0.38.4
+* joblib              1.3.2
+* NBT                 1.5.1
+* nbt-structure-utils 0.3.0
+* numpy               1.26.3
+* pillow              10.2.0
+* pip                 22.3.1
+* scikit-learn        1.4.0
+* scipy               1.12.0
+* setuptools          65.5.1
+* threadpoolctl       3.2.0
+* wheel               0.38.4
